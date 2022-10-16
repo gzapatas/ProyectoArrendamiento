@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  main:
+    image: postgres
+    labels:
+      svc: "postgres"
+    restart: always
+    environment:
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=serverpwd123456@@
+      - PGDATA=/var/lib/postgresql/data
+    volumes:
+      - postgresql-datavolume:/var/lib/postgresql/data
+    ports:
+      - 5433:5432

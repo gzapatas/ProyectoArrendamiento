@@ -1,0 +1,5 @@
+.box {
+    display: flex;
+    column-gap: 10px;
+    justify-content: flex-start;
+}

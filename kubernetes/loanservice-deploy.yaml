@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loanservice-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: loanservice-app
+  template:
+    metadata:
+      labels:
+        app: loanservice-app
+    spec:
+      containers:
+        - name: loanservice-container
+          image: localhost:5000/loanservice
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 7001
+          env:
+            - name: APP_PORT
+              value: "7001"
+            - name: DB_IP
+              value: "143.198.147.216"

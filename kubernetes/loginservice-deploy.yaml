@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loginservice-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: loginservice-app
+  template:
+    metadata:
+      labels:
+        app: loginservice-app
+    spec:
+      containers:
+        - name: loginservice-container
+          image: localhost:5000/loginservice
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 7000
+          env:
+            - name: APP_PORT
+              value: "7000"
+            - name: DB_IP
+              value: "143.198.147.216"

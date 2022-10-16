@@ -1,0 +1,53 @@
+version: "3"
+
+volumes:
+  postgresql-datavolume:
+
+networks:
+  net-app:
+    driver: "bridge"
+
+services:
+  frontend:
+    container_name: frontend
+    image: localhost:5000/frontend
+    ports:
+      - "3102:80"
+    build:
+      context: ../
+      dockerfile: ./dockerfiles/frontend/Dockerfile
+      args:
+        - stage=prod
+
+  database:
+    extends:
+      file: ./database/docker-compose.yaml
+      service: main
+    networks:
+      - net-app
+
+  loanservice:
+    container_name: loanservice
+    image: localhost:5000/loanservice
+    ports:
+      - "3100:7001"
+    build:
+      context: ../
+      dockerfile: ./dockerfiles/micros/LoanServer/Dockerfile
+    depends_on:
+      - database
+    networks:
+      - net-app
+  
+  loginservice:
+    container_name: loginservice
+    image: localhost:5000/loginservice
+    ports:
+      - "3101:7000"
+    build:
+      context: ../
+      dockerfile: ./dockerfiles/micros/LoginServer/Dockerfile
+    depends_on:
+      - database
+    networks:
+      - net-app

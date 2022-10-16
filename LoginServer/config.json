@@ -1,0 +1,23 @@
+{
+	"Port": 7000,
+	"CertPath": "",
+	"KeyPath": "",
+	"HttpsEnabled": false,
+	"DBParams": {
+		"Ip": "127.0.0.1",
+		"Name": "loginserver",
+		"Pass": "serverpwd123456@@",
+		"Port": 5433,
+		"User": "db_user",
+		"MaxIdleConns": 20,
+		"MaxOpenConns": 500
+	},
+	"Log": {
+		"FileEnabled": false,
+		"ConsoleEnabled": true,
+		"MaxFiles": 10,
+		"FilePrefix": "log",
+		"FileLimit": "100 KB",
+		"Directory": ""
+	}
+}

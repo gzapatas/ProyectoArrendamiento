@@ -1,0 +1,23 @@
+{
+	"Port": 7001,
+	"CertPath": "",
+	"KeyPath": "",
+	"HttpsEnabled": false,
+	"DBParams": {
+		"Ip": "database",
+		"Name": "loanserver",
+		"Pass": "serverpwd123456@@",
+		"Port": 5432,
+		"User": "db_user",
+		"MaxIdleConns": 20,
+		"MaxOpenConns": 500
+	},
+	"Log": {
+		"FileEnabled": true,
+		"ConsoleEnabled": true,
+		"MaxFiles": 10,
+		"FilePrefix": "log",
+		"FileLimit": "100 KB",
+		"Directory": ""
+	}
+}

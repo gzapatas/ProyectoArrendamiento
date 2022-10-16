@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: loanservice-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: loanservice-app
+  ports:
+    - protocol: TCP
+      port: 3100
+      targetPort: 7001
