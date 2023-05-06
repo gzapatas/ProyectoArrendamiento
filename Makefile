@@ -30,6 +30,28 @@ ingress:
 	kubectl apply -f ingress.yaml
 	cd ..
 
+down:
+	cd kubernetes
+	kubectl delete -f ingress.yaml
+	kubectl delete -f frontend-deploy.yaml
+	kubectl delete -f frontend-svc.yaml
+	kubectl delete -f loginservice-deploy.yaml
+	kubectl delete -f loginservice-svc.yaml
+	kubectl delete -f loanservice-deploy.yaml
+	kubectl delete -f loanservice-svc.yaml
+	cd ..
+
+up:
+	cd kubernetes
+	kubectl apply -f loginservice-deploy.yaml
+	kubectl apply -f loginservice-svc.yaml
+	kubectl apply -f loanservice-deploy.yaml
+	kubectl apply -f loanservice-svc.yaml
+	kubectl apply -f frontend-deploy.yaml
+	kubectl apply -f frontend-svc.yaml
+	kubectl apply -f ingress.yaml
+	cd ..
+
 pods:
 	kubectl get pods
 
@@ -59,3 +81,9 @@ build-login:
 	docker compose build loginservice --no-cache
 	docker push localhost:5000/loginservice
 	cd ..
+
+read-context:
+	kubectl config get-contexts
+
+desktop-context:
+	kubectl config use-context docker-desktop
